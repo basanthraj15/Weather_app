@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,7 @@ class WeatherPage extends StatefulWidget {
 }
 
 class _WeatherPageState extends State<WeatherPage> {
-  final String apiKey = 'e71ddad70328f8a04078509f6d89c950';
+  final String apiKey = '';
   String city = 'Kozhikode'; 
   String weather = '';
   double temp = 0.0;
@@ -21,6 +22,8 @@ class _WeatherPageState extends State<WeatherPage> {
   void initState() {
     super.initState();
     fetchWeatherData(city);
+    print(dotenv.env['APIKEY']);
+     print(dotenv.env['ENDPOINT']);
   }
 
   Future<void> fetchWeatherData(String city) async {
